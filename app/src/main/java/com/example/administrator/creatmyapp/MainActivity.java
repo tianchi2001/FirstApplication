@@ -26,12 +26,17 @@ public class MainActivity extends ActionBarActivity {
                 Intent i = new Intent(MainActivity.this, SecondActivity.class);
                 String input=mEtInput.getText().toString();
                 Log.d("MainActivity", input);
-                i.putExtra("userInput",String);
-
-
+                i.putExtra("userInput",input);
                 startActivity(i);
+                startActivityForResult(i,1);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d("MainActivity","接受到返回值"+data.getStringExtra("data"));
     }
 
     @Override
